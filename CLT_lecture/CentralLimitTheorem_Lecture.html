@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Central limit theorem</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Central limit theorem">
+  <meta name="author" content="Giusi Moffa, PhD Statistics">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/prettify/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <aside class="gdbar">
+    <img src="assets/img/combinedlogostrans.png">
+  </aside>
+  <hgroup class="auto-fadein">
+    <h1>Central limit theorem</h1>
+    <h2>A practical introduction</h2>
+    <p>Giusi Moffa, PhD Statistics<br/>Trial lecture, 11 October 2018</p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <article data-timings="">
+    <!-- It seems caching happens by default, and caching of the options chunk appears to break things down -->
+
+<h2>Normal distribution</h2>
+
+<div style='float:left;width:58%;'>
+    <p>Continuous random variable \(X\) with normal distribution</p>
+
+<ul>
+<li>probability density function</li>
+</ul>
+
+<p>\[f(x; \mu, \sigma) = \frac{1}{\sigma \sqrt{2 \pi}} e^{ -\frac{1}{2} \left( \frac{x-\mu}{\sigma} \right)^2 }\]</p>
+
+<p>\(x \in \mathbb{R}, \mu \in \mathbb{R}, \sigma \in \mathbb{R}_+\)</p>
+
+<ul>
+<li>mean \(\mathbb{E}(X)=\mu\), variance \(\mathbb{V}ar(X)=\sigma^2\)</li>
+</ul>
+
+<p>\[X \thicksim \mathcal{N}(\mu, \sigma^2)\]</p>
+
+<ul>
+<li>cumulative distribution function</li>
+</ul>
+
+<p>\[F(x) = \Phi\left(\frac{X-\mu}{\sigma}\right), \Phi(z) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^z e^{-\frac{t^2}{2}}\mathrm{d}t \]</p>
+
+</div>
+<div style='float:right;width:38%;'>
+    <p><img src="assets/fig/normalPlots-1.png" alt="plot of chunk normalPlots"><img src="assets/fig/normalPlots-2.png" alt="plot of chunk normalPlots"></p>
+
+</div>
+<div style='clear:both'>
+    
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-2" style="background:;">
+  <hgroup>
+    <h2>Sum of normal random variables</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:42%;'>
+    <p>If \(X_1, X_2, \ldots , X_n\) are mutually independent normal random variables with means \(\mu_1, \mu_2, \ldots , \mu_n\) and variances \(\sigma_1^2, \sigma_2^2, \ldots, \sigma_n^2\)</p>
+
+<p>then the linear combination:</p>
+
+<p>\[Y = \sum_{i=1}^n c_i X_i\]
+follows a normal distribution 
+\[Y \thicksim \mathcal{N}\left(\sum_{i=1}^n c_i \mu_i, \sum_{i=1}^n c_i^2 \sigma_i^2\right)\]</p>
+
+</div>
+<div style='float:right;width:54%;'>
+    <p><img src="assets/fig/sumNormal-1.png" alt="plot of chunk sumNormal"></p>
+
+<p>\[X_1 \thicksim \mathcal{N}(2,1)\] 
+\[X_2 \thicksim \mathcal{N}(5,2)\]
+\[X_1 + X_2 \thicksim \mathcal{N}(7,3)\]</p>
+
+</div>
+<div style='clear:both'>
+    
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>Sampling distribution of the sample mean</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:42%;'>
+    <p></br></br>
+If \(X_1, X_2, \ldots X_n\) are a random sample of size \(n\) from a normal \(\mathcal{N}(\mu, \sigma^2)\) population with mean \(\mu\) and variance \(\sigma^2\), then the sample mean:</p>
+
+<p>\[\bar{X} = \frac{X_1 + X_2 + \dots + X_n}{n}\]</p>
+
+<p>follows a normal distribution with mean \(\mu\) and variance \(\sigma^2/n\)</p>
+
+<p>\[\bar{X} \thicksim \mathcal{N}\left(\mu, \frac{\sigma^2}{n}\right)\]</p>
+
+</div>
+<div style='float:right;width:54%;'>
+    <p></br></br></br>
+<img src="assets/fig/normalSampleMean-1.png" alt="plot of chunk normalSampleMean"></p>
+
+</div>
+<div style='clear:both'>
+    
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>Uniform distribution - sample mean</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:58%;'>
+    <p>Continuous random variable \(X\) with uniform distribution</p>
+
+<ul>
+<li>probability density function</li>
+</ul>
+
+<p>\[f(x; a, b) = \left \{ \begin{array}{cc} \frac{1}{b-a} & \ a \le x \le b  \\
+0 & \mathrm{otherwise}
+\end{array} \right.\]</p>
+
+<ul>
+<li>mean \(\mathbb{E}(X)=\frac{1}{a+b}\), variance \(\mathbb{V}ar(X)=\frac{1}{12}(b-a)^2\)</li>
+</ul>
+
+<p>\[X \thicksim U(a, b)\]</p>
+
+<ul>
+<li>cumulative distribution function</li>
+</ul>
+
+<p>\[F(x; a, b) = \left \{ \begin{array}{cc} 0 & x < a  \\
+\frac{x-a}{b-a} & a \le x < b \\
+1 & x \ge 1
+\end{array} \right.\]</p>
+
+</div>
+<div style='float:right;width:38%;'>
+    <p><img src="assets/fig/simUnif-1.png" alt="plot of chunk simUnif">
+<img src="gifAnimation/runif30.gif" width="350px"></p>
+
+</div>
+<div style='clear:both'>
+    
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-5" style="background:;">
+  <hgroup>
+    <h2>Exponential distribution - sample mean</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:58%;'>
+    <p>Continuous random variable \(X\) with exponential distribution</p>
+
+<ul>
+<li>probability density function</li>
+</ul>
+
+<p>\[f(x; \lambda) = \left \{ \begin{array}{cc} \lambda e^{-\lambda x} & x \ge 0  \\
+0 & x < 0 
+\end{array} \right.\]</p>
+
+<ul>
+<li>mean \(\mathbb{E}(X)=\frac{1}{\lambda}\), variance \(\mathbb{V}ar(X)=\frac{1}{\lambda^2}\)</li>
+</ul>
+
+<p>\[X \thicksim \mathrm{Exp}(\lambda)\]</p>
+
+<ul>
+<li>cumulative distribution function</li>
+</ul>
+
+<p>\[F(x; \lambda) = \left \{ \begin{array}{cc} 1 - e^{-\lambda x} & x \ge 0  \\
+0 & x < 0 
+\end{array} \right.\]</p>
+
+</div>
+<div style='float:right;width:38%;'>
+    <p><img src="assets/fig/simExp-1.png" alt="plot of chunk simExp">
+<img src="gifAnimation/rexp30.gif" width="350px"></p>
+
+</div>
+<div style='clear:both'>
+    
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-6" style="background:;">
+  <hgroup>
+    <h2>Poisson distribution - sample mean</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:58%;'>
+    <p>Discrete random variable \(X\) with Poisson distribution</p>
+
+<ul>
+<li>probability mass function</li>
+</ul>
+
+<p>\[f(k; \lambda) = \frac{\lambda^k e^-\lambda}{k!} \qquad  k=0, 1, 2, \ldots\]</p>
+
+<ul>
+<li>mean \(\mathbb{E}(X)=\lambda\), variance \(\mathbb{V}ar(X)=\lambda\)</li>
+</ul>
+
+<p>\[X \thicksim \mathrm{Pois}(\lambda)\]</p>
+
+<ul>
+<li>cumulative distribution function</li>
+</ul>
+
+<p>\[F(x; \lambda) = \left \{ 
+\begin{array}{cc}
+\frac{\Gamma(\lfloor k+1 \rfloor, \lambda)}{\lfloor k \rfloor !} & k \ge 0 \\
+0 & k <0
+\end{array}
+\right.\]</p>
+
+</div>
+<div style='float:right;width:38%;'>
+    <p><img src="assets/fig/simPoisson-1.png" alt="plot of chunk simPoisson">
+<img src="gifAnimation/rpois30.gif" width="350px"></p>
+
+</div>
+<div style='clear:both'>
+    
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-7" style="background:;">
+  <hgroup>
+    <h2>Bernoulli distribution - sample mean</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:58%;'>
+    <p>Binary random variable \(X\): Bernoulli distribution</p>
+
+<ul>
+<li>probability mass function</li>
+</ul>
+
+<p>\[f(k;p) = p^k(1-p)^{k-1} \qquad k \in {0,1}\]</p>
+
+<ul>
+<li>mean \(\mathbb{E}(X)=p\), variance \(\mathbb{V}ar(X)=p(1-p)\)</li>
+</ul>
+
+<p>\[X \thicksim \mathcal{B}(1,p)\]</p>
+
+<ul>
+<li>cumulative distribution function</li>
+</ul>
+
+<p>\[F(x) = \left \{ \begin{array}{cc} 0 & k < 0  \\
+1-p & 0 \le k < 1 \\
+1 & k \ge 1
+\end{array} \right.\]</p>
+
+</div>
+<div style='float:right;width:38%;'>
+    <p><img src="assets/fig/simBernoulli-1.png" alt="plot of chunk simBernoulli">
+<img src="gifAnimation/rbinom30.gif" width="350px"></p>
+
+</div>
+<div style='clear:both'>
+    
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-8" style="background:;">
+  <hgroup>
+    <h2>Classical - Central limit theorem</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><strong>Fundamental theorem in statistics</strong></p>
+
+<p>Let \(X_1, X_2, \ldots X_n\) be a sequence of \(n\) indipendent identically distributed random variables, from <strong>any</strong> distribution with </p>
+
+<ul>
+<li>(finite) mean \(\mathbb{E}(X_i) = \mu\) </li>
+<li>(finite) variance \(\mathbb{V}ar(X_i) = \mathbb{E}(X_i -\mu)^2 = \sigma^2\).<br></li>
+</ul>
+
+<p>For large \(n\) the sample mean \(\bar{X} = \frac{X_1 + X_2 + \dots + X_n}{n}\) follows an approximate normal distribution with</p>
+
+<ul>
+<li>mean \(\mathbb{E}(\bar{X}) = \mu\), variance \(\mathbb{V}ar(\bar{X}) = \sigma_{\bar{X}}^2 = \frac{\sigma^2}{n}\)</li>
+</ul>
+
+<p>\[\bar{X} \xrightarrow[]{\; d \;} \mathcal{N}\left(\mu, \frac{\sigma^2}{n}\right), \quad Z_n =\frac{\bar{X} - \mu}{\sigma/\sqrt{n}} \xrightarrow[]{\; d \;} \mathcal{N}\left(0, 1\right)\]</p>
+
+<p>The sampling distribution of the sample mean is approximately normal regardless of the distribution of the underlying sample.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-9" style="background:;">
+  <hgroup>
+    <h2>Central limit theorem - sketch of proof</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>We can write \(Z_n = \sum_{i=1}^n \frac{X_i - \mu}{\sigma \sqrt{n}} = \sum_{i=1}^n \frac{Y_i}{\sqrt{n}}\), with \(Y_i = \frac{X_i - \mu}{\sigma}\)</p>
+
+<p>By the properties of the characteristic function, defined as \(\varphi_X(t) = \mathbb{E}(e^{-itX})\) for a random variable \(X\), and given that \(Y_i\)&#39;s are iid, we get the following for \(Z_n\)</p>
+
+<p>\[\varphi_{Z_n}(t) = \left[ \varphi_{Y_1} \left( \frac{t}{\sqrt{n}} \right) \right]^n\]
+By Taylor&#39;s theorem: \(\varphi_{Y_1}(t/\sqrt{n}) = 1-\frac{\sigma^2}{2}t^2 + O(t^3)\), 
+so that</p>
+
+<p>\[\varphi_{Z_n}(t) = \left( 1-\frac{\sigma^2}{2}t^2 + O(t^3) \right)^n \longrightarrow e^{-\frac{1}{2}t^2}, \quad n \rightarrow \infty\]
+characteristic function of a standard normal r.v., with Levy&#39;s continuity theorem to bridge pointwise convergence of the characteristic function to convergence in distribution and complete the proof.</p>
+
+<p>Lyapunov extension to unequal means and variances:<br>
+\(\frac{1}{s_n} \sum_{i=1}^n (X_i-\mu_i) \xrightarrow[]{\; d \; } \mathcal{N}(0,1)\),
+with \(s_n^2 = \sum_{i=1}^n \sigma_i^2\)</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-10" style="background:;">
+  <hgroup>
+    <h2>Cauchy distribution</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:48%;' class='centered'>
+  <p>Continuous random variable \(X\) with Cauchy distribution</p>
+
+<ul>
+<li>probability density function</li>
+</ul>
+
+<p>\[f(x; x_0, \gamma) = \frac{1}{\pi\gamma \left[ 1 + \left( \frac{x-x_0}{\gamma} \right)^2 \right]}\]</p>
+
+<ul>
+<li>with location \(x_0\), scale \(\gamma>0\), mean and variance <strong>undefined</strong></li>
+</ul>
+
+<p>\[X \thicksim \mathrm{Cauchy}(x_0, \gamma)\]</p>
+
+<ul>
+<li>cumulative distribution function</li>
+</ul>
+
+<p>\[F(x; x_0, \gamma) = \frac{1}{\pi}\arctan\left( \frac{x-x_0}{\gamma} \right) + \frac{1}{2}\]</p>
+
+</div>
+<div style='float:right;width:48%;'>
+  <p><img src="assets/fig/simCauchy-1.png" alt="plot of chunk simCauchy"></p>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-11" style="background:;">
+  <hgroup>
+    <h2>The Quincunx</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:48%;'>
+    <p>Example of a Galton board/box or quincunx</p>
+
+<p><img src="figs/quincunx_figure_zoom.png" alt="" height=360px> &nbsp; <img src="figs/quincunx.jpg" alt="" height=360px></p>
+
+<ul>
+<li>Sir Francis Galton (1893)</li>
+<li>physical demonstration of the CLT</li>
+</ul>
+
+</div>
+<div style='float:right;width:48%;'>
+    <p><img src="figs/galton-board-large_1_mobile_1.gif", loop="-1"><br>
+[<a href="http://galtonboard.com/">http://galtonboard.com/</a>]</p>
+
+<!-- _Quincunx is a good scrabble word!  Galton along with being the half-cousin of Darwin was also the "father" of eugenics!_ -->
+
+</div>
+<div style='clear:both'>
+    
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-12" style="background:;">
+  <hgroup>
+    <h2>Historical notes</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:48%;' class='centered'>
+  <ul>
+<li>1733: early version, for binomial distribution with \(p=1/2\), by Abraham de Moivre<br>
+(44 years before Gauss&#39; birth)</li>
+<li>1812: extended by Pierre-Simon Laplace</li>
+<li>1920: named <strong>Central Limit Theorem</strong> by George Pólya</li>
+</ul>
+
+</div>
+<div style='float:right;width:48%;'>
+  <p><img src="figs/AdamsCLT.jpg" alt=""></p>
+
+<!-- Inspired by https://www.johndcook.com/blog/2010/01/05/how-the-central-limit-theorem-began/ -->
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-13" style="background:;">
+  <hgroup>
+    <h2>References</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Course from Penn State
+<a href="https://onlinecourses.science.psu.edu/stat414/node/176/">https://onlinecourses.science.psu.edu/stat414/node/176/</a></p>
+
+<p><a href="https://www.johndcook.com/blog/central_limit_theorems/">https://www.johndcook.com/blog/central_limit_theorems/</a>
+<a href="https://www.johndcook.com/blog/2010/01/05/how-the-central-limit-theorem-began/">https://www.johndcook.com/blog/2010/01/05/how-the-central-limit-theorem-began/</a></p>
+
+<p>Animate a Monte Carlo simulation
+<a href="https://roh.engineering/post/animating-a-monte-carlo-simulation/">https://roh.engineering/post/animating-a-monte-carlo-simulation/</a></p>
+
+<p><a href="https://freakonometrics.hypotheses.org/52347">https://freakonometrics.hypotheses.org/52347</a></p>
+
+<p><a href="https://www.learner.org/courses/mathilluminated/units/7/textbook/06.php">https://www.learner.org/courses/mathilluminated/units/7/textbook/06.php</a></p>
+
+<p><a href="http://www.sthda.com/english/wiki/ggplot2-histogram-plot-quick-start-guide-r-software-and-data-visualization">http://www.sthda.com/english/wiki/ggplot2-histogram-plot-quick-start-guide-r-software-and-data-visualization</a></p>
+
+<p><a href="https://www.wikiwand.com/en/De_Moivre%E2%80%93Laplace_theorem">https://www.wikiwand.com/en/De_Moivre%E2%80%93Laplace_theorem</a></p>
+
+<style>
+
+.title-slide {
+  background-color: #FFFFFF;
+}
+
+.title-slide hgroup > h1{
+font-size: 180% ;
+}
+
+.title-slide hgroup > h1, 
+.title-slide hgroup > h2 {
+  color: #005579 ; /* novartis blue, #116BB1 eth blue, #EF5150 default*/
+}
+
+slide.segue h2 {
+  color: #005579 ; /* novartis blue, #116BB1 eth blue, #EF5150 default*/
+}
+
+slide:not(.segue) h2 {
+  color: #005579 ; /* novartis blue, #116BB1 eth blue, #EF5150 default*/
+}
+
+/* Styles for Title Slide */
+.title-slide hgroup > h1{
+  font-family: "Open Sans Condensed", 'Garamond', 'Calibri', sans-serif;
+  font-weight: 700;
+}
+
+.title-slide hgroup > h2{
+  font-family: "Open Sans Condensed", 'Garamond','Calibri', sans-serif;
+  font-weight: 700;
+  font-size: 150% ;
+}
+
+slide p {
+ font-family: 'Open Sans','Helvetica', 'Crimson Text', 'Garamond',  'Palatino', sans-serif;
+ color: #444444 ;
+ font-size: 80%
+} 
+
+footer p {
+ font-family: 'Open Sans','Helvetica', 'Crimson Text', 'Garamond',  'Palatino', sans-serif;
+ color: #444444 ;
+} 
+
+p.cite {
+  color: #005579 ; /* novartis blue, #116BB1 eth blue, #EF5150 default*/
+  font-size: 67% ;
+}
+
+em {
+  color: #005579 ; /* novartis blue, #116BB1 eth blue, #EF5150 default*/
+  font-size: 67% ;
+  /*font-style: italic*/
+}
+
+strong {
+  color: #005579 ; /* novartis blue, #116BB1 eth blue, #EF5150 default*/
+  /*font-size: 67% */;
+  font-weight: bold;
+}
+
+mark {
+  background-color:transparent;
+  color: #888888 ;
+  font-size: 67% ;
+  /*font-style: italic*/
+}
+
+/* Fonts and Spacing */
+article p, article li, article li.build, section p, section li{
+  text-align: left;
+}
+
+footnote {
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 10px;
+  width: 80%;
+  font-size: 67%;
+  line-height: 1.5;
+}
+
+table th {
+  background: #99bbc9;
+  color: #005579;
+  text-transform: uppercase;
+}
+table td {
+  border-bottom: 1px solid #CFCEBD;
+}
+table tr:nth-child(2n) {
+  background: #d6e3e9;
+}
+table tr:nth-child(2n+1) {
+  background: #ffffff;
+}
+
+#hidestuff {margin-top:-124px;}
+#hidestuffless {margin-top:-100px;}
+#hidestuffevenless {margin-top:-75px;}
+#hidestuffpic {margin-top:-200px;}
+#hidestuffbigpic {margin-top:-250px;}
+
+#testfooter {
+  font-size: 12pt;
+  position: absolute;
+  bottom: 20px;
+  right: 60px;
+  line-height: 1.9;
+}
+
+#testfooter:after {
+   content: "/10";
+}
+
+/* change logo size */
+aside.gdbar img {
+  width: 504px; 
+  height: 68px; 
+  position: absolute;
+  right: 0;
+  margin: 15px 15px;
+}
+
+/* change logo background */
+aside.gdbar {
+  height: 100px;
+  width: 281px;
+  position: absolute;
+  left: 10px;
+  top: 125px;
+}
+
+aside.gdbar {
+  width: 534px; 
+}
+
+/* Reduce Space between Title and Body */
+slides > slide > hgroup + article {
+  margin-top: 30px;
+}
+
+slides > slide:not(.nobackground):after {
+  font-size: 12pt;
+  content: "";
+  position: absolute;
+  bottom: 20px;
+  right: 60px;
+  line-height: 1.9;
+}
+
+</style>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='NA'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Sum of normal random variables'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Sampling distribution of the sample mean'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Uniform distribution - sample mean'>
+         4
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title='Exponential distribution - sample mean'>
+         5
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=6 title='Poisson distribution - sample mean'>
+         6
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=7 title='Bernoulli distribution - sample mean'>
+         7
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=8 title='Classical - Central limit theorem'>
+         8
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=9 title='Central limit theorem - sketch of proof'>
+         9
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=10 title='Cauchy distribution'>
+         10
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=11 title='The Quincunx'>
+         11
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=12 title='Historical notes'>
+         12
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=13 title='References'>
+         13
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- MathJax: Fall back to local if CDN offline but local image fonts are not supported (saves >100MB) -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+      }
+    });
+  </script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- <script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script> -->
+  <script>window.MathJax || document.write('<script type="text/x-mathjax-config">MathJax.Hub.Config({"HTML-CSS":{imageFont:null}});<\/script><script src="libraries/widgets/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"><\/script>')
+</script>
+<!-- Google Prettify -->
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/prettify/188.0.0/prettify.js"></script>
+  <script src='libraries/highlighters/prettify/js/lang-r.js'></script>
+  <script>
+    var pres = document.getElementsByTagName("pre");
+    for (var i=0; i < pres.length; ++i) {
+      pres[i].className = "prettyprint linenums";
+    }
+    prettyPrint();
+  </script>
+  <!-- End Google Prettify --> 
+  </html>
