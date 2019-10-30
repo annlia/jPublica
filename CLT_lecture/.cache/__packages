@@ -1,0 +1,17 @@
+base
+readr
+readxl
+dplyr
+tidyr
+tibble
+haven
+stringr
+magrittr
+bindrcpp
+devtools
+knitr
+slidify
+plyr
+ggplot2
+gridExtra
+latex2exp
